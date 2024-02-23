@@ -8,5 +8,11 @@
       "id": "2a42fcc4-ea21-4bdd-abf6-c40006dc66a9"
     }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$12$CaiUFvact4sUPWwtLpcWXuJ/bXFAJy0gqCBxQkFGyJOR7dUuai3h.",
+      "id": "bbaa6593-1f2d-404f-ae4e-0d58849cec14"
+    }
+  ]
 }

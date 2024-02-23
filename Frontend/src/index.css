@@ -128,6 +128,59 @@ textarea {
   width: fit-content;
 }
 
+.login-form {
+  width: 40%;
+  margin: auto;
+  background-color: #d4d0d0;
+  border-radius: 10px;
+  padding: 20px 50px;
+  margin-top: 20px;
+}
+
+.login-form p {
+  text-align: center;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.login-form div {
+  margin-top: 10px;
+}
+
+.login-form div label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.login-form div input {
+  width: 90%;
+  border: 1px solid #d4d0d0;
+  outline: none;
+  border-radius: 5px;
+  padding: 8px 10px;
+}
+
+.login-form h1 {
+  font-size: 16px;
+  color: #565656;
+  font-weight: 300;
+}
+
+.login-form span{
+  color: #ff0000;
+}
+
+.create-acc {
+  color: #565656;
+  text-decoration: underline;
+}
+
+.create-acc:hover {
+  cursor: pointer;
+}
+
 .errorPage {
   width: 60%;
   margin: auto;

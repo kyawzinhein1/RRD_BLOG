@@ -10,6 +10,7 @@ import Details, {
 import Create from "./pages/Create";
 import Edit from "./pages/Edit";
 import Error from "./pages/Error";
+import Auth, { action as AuthAction } from "./pages/Auth";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -27,6 +28,11 @@ const App = () => {
           path: "/create-post",
           element: <Create />,
           action: postCreateAction,
+        },
+        {
+          path: "auth",
+          element: <Auth />,
+          action: AuthAction,
         },
         {
           path: ":id",
