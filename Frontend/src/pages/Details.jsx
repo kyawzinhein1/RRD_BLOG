@@ -1,6 +1,7 @@
 import { redirect, useRouteLoaderData } from "react-router-dom";
 import PostDetails from "../components/PostDetails";
 import { getToken } from "../util/auth";
+import process from "process";
 
 const Details = () => {
   const post = useRouteLoaderData("post-detail");
@@ -14,7 +15,7 @@ const Details = () => {
 export default Details;
 
 export const loader = async ({ request, params }) => {
-  const response = await fetch(`http://localhost:8080/posts/${params.id}`);
+  const response = await fetch(`${process.env.REACT_APP_DOMAIN}/posts/${params.id}`);
 
   if (!response.ok) {
   } else {
@@ -26,7 +27,7 @@ export const loader = async ({ request, params }) => {
 // delete action
 export const action = async ({ request, params }) => {
   const token = getToken();
-  const response = await fetch(`http://localhost:8080/posts/${params.id}`, {
+  const response = await fetch(`${process.env.REACT_APP_DOMAIN}/posts/${params.id}`, {
     method: request.method,
     headers: {
       Authorization: "Bearer " + token,

@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import PostItems from "../components/PostItems";
+import process from "process";
 
 const Posts = () => {
   const posts = useLoaderData();
@@ -14,7 +15,7 @@ const Posts = () => {
 export default Posts;
 
 export const loader = async () => {
-  const response = await fetch("http://localhost:8080/posts");
+  const response = await fetch(`${process.env.REACT_APP_DOMAIN}/posts`);
 
   if (!response.ok) {
   } else {

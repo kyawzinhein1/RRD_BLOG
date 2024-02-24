@@ -1,6 +1,7 @@
 import React from "react";
 import AuthForm from "../components/AuthForm";
 import { redirect } from "react-router-dom";
+import process from "process";
 
 const Auth = () => {
   return <AuthForm />;
@@ -22,7 +23,7 @@ export const action = async ({ request }) => {
     password: data.get("password"),
   };
 
-  const response = await fetch(`http://localhost:8080/${mode}`, {
+  const response = await fetch(`${process.env.REACT_APP_DOMAIN}/${mode}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -45,6 +46,6 @@ export const action = async ({ request }) => {
   const expDate = new Date();
   expDate.setHours(expDate.getHours() + 1);
   localStorage.setItem("exp", expDate.toISOString());
-  
+
   return redirect("/");
 };
