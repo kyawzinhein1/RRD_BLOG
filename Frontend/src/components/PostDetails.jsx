@@ -1,7 +1,8 @@
 import { ArrowLeftIcon, ClockIcon } from "@heroicons/react/24/solid";
-import { Link, useSubmit } from "react-router-dom";
+import { Link, useRouteLoaderData, useSubmit } from "react-router-dom";
 
 const PostDetails = ({ post }) => {
+  const isToken = useRouteLoaderData("root");
   const { image, date, title, description } = post;
   const submit = useSubmit();
 
@@ -33,14 +34,17 @@ const PostDetails = ({ post }) => {
 
       <img src={image} alt={title} />
       <p className="description">{description}</p>
-      <div className="detail-footer">
-        <Link to={`edit-post`}>
-          <p className="btn sm">Edit</p>
-        </Link>
-        <p className="btn sm" onClick={postDeleteHandler}>
-          Delete
-        </p>
-      </div>
+
+      {isToken && (
+        <div className="detail-footer">
+          <Link to={`edit-post`}>
+            <p className="btn sm">Edit</p>
+          </Link>
+          <p className="btn sm" onClick={postDeleteHandler}>
+            Delete
+          </p>
+        </div>
+      )}
       <hr />
     </section>
   );

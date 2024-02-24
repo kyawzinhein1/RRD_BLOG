@@ -5,7 +5,7 @@ const Create = () => {
   return (
     <>
       <PostForm
-        header={"Create your post now...😊"}
+        header={"Create your post now..."}
         btnText={"Create Post"}
         method={"post"}
       />

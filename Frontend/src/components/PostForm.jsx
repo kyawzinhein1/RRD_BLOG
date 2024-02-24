@@ -1,9 +1,18 @@
-import { Form, Link, redirect, useActionData } from "react-router-dom";
+import {
+  Form,
+  Link,
+  redirect,
+  useActionData,
+  useNavigation,
+} from "react-router-dom";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import uuid from "react-uuid";
+import { getToken } from "../util/auth";
 
 const PostForm = ({ header, btnText, oldPostData, method }) => {
   const data = useActionData();
+  const navigation = useNavigation();
+  const updating = navigation.state === "submitting";
 
   return (
     <section className="post-form">
@@ -64,7 +73,7 @@ const PostForm = ({ header, btnText, oldPostData, method }) => {
             defaultValue={oldPostData ? oldPostData.description : ""}
           ></textarea>
         </div>
-        <button className="btn">{btnText}</button>
+        <button className="btn">{updating ? "Loading" : btnText}</button>
       </Form>
     </section>
   );
@@ -75,6 +84,7 @@ export default PostForm;
 export const action = async ({ request, params }) => {
   const data = await request.formData();
   const method = request.method;
+  const token = getToken();
 
   const postData = {
     id: uuid(),
@@ -95,6 +105,7 @@ export const action = async ({ request, params }) => {
     method,
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer " + token,
     },
     body: JSON.stringify(postData),
   });

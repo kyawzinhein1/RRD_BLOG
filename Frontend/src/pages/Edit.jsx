@@ -7,7 +7,7 @@ const Edit = () => {
   return (
     <section className="detial">
       <PostForm
-        header={"Edit your post now...😊"}
+        header={"Edit your post now..."}
         btnText={"Update Post"}
         oldPostData={post}
         method={"patch"}

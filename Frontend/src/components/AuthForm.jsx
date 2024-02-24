@@ -1,11 +1,19 @@
 import React from "react";
-import { Form, Link, useActionData, useSearchParams } from "react-router-dom";
+import {
+  Form,
+  Link,
+  useActionData,
+  useNavigation,
+  useSearchParams,
+} from "react-router-dom";
 
 const AuthForm = () => {
   const data = useActionData();
+  const navigation = useNavigation();
 
   const [searchParams] = useSearchParams();
   const isLogin = searchParams.get("mode") === "login";
+  const isSubmitting = navigation.state === "submitting";
 
   return (
     <section>
@@ -13,9 +21,9 @@ const AuthForm = () => {
         <p>{isLogin ? "Login to your account" : "Create new account"}</p>
         {data && data.errors && (
           <ul>
-            {Object.values(data.errors).map((err) => {
-              <li key={err}>{err}</li>;
-            })}
+            {Object.values(data.errors).map((err) => (
+              <li key={err}>{err}</li>
+            ))}
           </ul>
         )}
 
@@ -28,7 +36,9 @@ const AuthForm = () => {
           <label htmlFor="password">Password</label>
           <input type="password" name="password" id="password" required />
         </div>
-        <button className="btn">{isLogin ? "Login" : "Register"}</button>
+        <button className="btn" disabled={isSubmitting}>
+          {isSubmitting ? "Submitting" : isLogin ? "Login" : "Register"}
+        </button>
 
         {isLogin ? (
           <h1 className="create-acc">
