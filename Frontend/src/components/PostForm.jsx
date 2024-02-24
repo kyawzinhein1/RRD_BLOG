@@ -8,7 +8,6 @@ import {
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import uuid from "react-uuid";
 import { getToken } from "../util/auth";
-import process from "process";
 
 const PostForm = ({ header, btnText, oldPostData, method }) => {
   const data = useActionData();

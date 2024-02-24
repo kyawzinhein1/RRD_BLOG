@@ -1,7 +1,6 @@
 import React from "react";
 import AuthForm from "../components/AuthForm";
 import { redirect } from "react-router-dom";
-import process from "process";
 
 const Auth = () => {
   return <AuthForm />;

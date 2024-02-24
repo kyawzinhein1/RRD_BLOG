@@ -1,6 +1,5 @@
 import { useLoaderData } from "react-router-dom";
 import PostItems from "../components/PostItems";
-import process from "process";
 
 const Posts = () => {
   const posts = useLoaderData();

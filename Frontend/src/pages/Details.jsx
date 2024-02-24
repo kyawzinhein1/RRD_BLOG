@@ -1,7 +1,6 @@
 import { redirect, useRouteLoaderData } from "react-router-dom";
 import PostDetails from "../components/PostDetails";
 import { getToken } from "../util/auth";
-import process from "process";
 
 const Details = () => {
   const post = useRouteLoaderData("post-detail");
